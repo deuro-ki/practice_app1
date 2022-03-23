@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       log_in(user)
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       #remember(user)
-      redirect_to(user)
+      redirect_back_or(user)
       # ログイン後にユーザー情報ページにリダイレクトします。
     else
       # ここにはエラーメッセージ用のflashを入れます。

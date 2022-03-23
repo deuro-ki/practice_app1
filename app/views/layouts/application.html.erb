@@ -9,10 +9,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- HTML shimがこの1行で収まる -->
     <%= render 'layouts/shim' %>
-    
+    <%#= render partial: 'layouts/shim', locals: {obj: @user} %>
   </head>
   <body>
     <%= render 'layouts/header' %>
+    <%#= render partial: 'layouts/header', locals: {obj: @user} %>
     <div class="container">
       <% flash.each do |message_type, msg| %>
         <div class="alert alert-<%= message_type %>"><%= msg %></div>

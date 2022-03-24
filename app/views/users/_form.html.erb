@@ -7,6 +7,15 @@
   <%= f.label :email, class: "label-#{yield(:class_text)}" %>
   <%= f.email_field :email, class: "form-control" %>
 
+  <%= f.label :department, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :department, class: "form-control" %>
+
+  <%= f.label :uid, class: "label-#{yield(:class_text)}" %>
+  <%= f.number_field :uid, class: "form-control" %>
+
+  <%= f.label :user_details, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_area :user_details, class: "form-control" %>
+
   <%= f.label :password, class: "label-#{yield(:class_text)}" %>
   <%= f.password_field :password, class: "form-control" %>
 

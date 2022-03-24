@@ -7,6 +7,11 @@ ja:
           id: ID
           name: 名前
           email: メールアドレス
+          department: 所属
+          basic_time: 基本時間
+          working_time: 勤務時間
+          uid: 従業員番号
+          user_details: 従業員詳細
           password: パスワード
           password_confirmation: パスワード再入力
           created_at: 作成日

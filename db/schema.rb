@@ -18,6 +18,12 @@ ActiveRecord::Schema.define(version: 2022_03_09_024924) do
     t.string "password_digest"
     t.string "remember_digest"
     t.boolean "admin", default: false
+    t.string "department"
+    t.string "user_details"
+    t.integer "employee_number"
+    t.integer "uid"
+    t.datetime "basic_time", default: "2022-03-23 23:00:00", null: false
+    t.datetime "working_time", default: "2022-03-23 22:30:00", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

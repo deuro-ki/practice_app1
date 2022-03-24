@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
+      flash[:warning] = 'ログインしました。'
       log_in(user)
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       #remember(user)
@@ -20,7 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    flash[:info] = 'ログアウトしました。'
+    flash[:warning] = 'ログアウトしました。'
     redirect_to root_url
   end
 

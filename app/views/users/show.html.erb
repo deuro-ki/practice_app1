@@ -20,6 +20,7 @@
 </div>
 <div class="btn-users-show">
   <%= link_to "⇦ 前月へ", user_path(date: @first_day.prev_month), class: "btn btn-info" %>
+  <%= link_to "1ヶ月の勤怠編集へ", attendances_edit_one_month_user_path(date: @first_day), class: "btn btn-success" %>
   <%= link_to "次月へ ⇨", user_path(date: @first_day.next_month), class: "btn btn-info" %>
 </div>
 <div>
@@ -37,25 +38,25 @@
       </tr>
     </thead>
     <tbody>
-      <% @attendances.each do |day| %>
+      <% @attendances.each do |i| %>
         <tr>
-          <td><%= l(day.worked_on, format: :short) %></td>
-          <td><%= $days_of_the_week[day.worked_on.wday] %></td>
+          <td><%= l(i.worked_on, format: :short) %></td>
+          <td><%= $days_of_the_week[i.worked_on.wday] %></td>
           <td>
-            <% if btn_text = attendance_state(day) %>
-              <%= link_to "#{btn_text}登録", user_attendance_path(@user, day), method: :patch, class: "btn btn-primary btn-attendance" %>
+            <% if btn_text = attendance_state(i) %>
+              <%= link_to "#{btn_text}登録", user_attendance_path(@user, i), method: :patch, class: "btn btn-primary btn-attendance" %>
             <% end %>
           </td>
-          <td><%= l(day.started_at, format: :time) if day.started_at.present? %></td>
-          <td><%= l(day.finished_at, format: :time) if day.finished_at.present? %></td>
-          <td><%= day.green_time %></td>
+          <td><%= l(i.started_at, format: :time) if i.started_at.present? %></td>
+          <td><%= l(i.finished_at, format: :time) if i.finished_at.present? %></td>
+          <td><%= i.green_time %></td>
           <td>
-            <% if day.started_at.present? && day.finished_at.present? %>
-              <%= str_times = working_times(day.started_at, day.finished_at) %>
+            <% if i.started_at.present? && i.finished_at.present? %>
+              <%= str_times = working_times(i.started_at, i.finished_at) %>
               <% @total_working_times = @total_working_times.to_f + str_times.to_f %>
             <% end %>
           </td>
-          <td></td>
+          <td><%= i.reason %></td>
         </tr>
       <% end %>
     </tbody>
